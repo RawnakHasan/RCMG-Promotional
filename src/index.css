@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.875rem;
+
+  --background: #faf5e8;
+  --foreground: #1d2a24;
+
+  --card: #fffdf7;
+  --card-foreground: #1d2a24;
+
+  --muted: #f1e8d2;
+  --muted-foreground: #5c6a62;
+
+  --accent: #ebe1c8;
+  --accent-foreground: #1d2a24;
+
+  --primary: #ff5a4d;
+  --primary-foreground: #1d2a24;
+
+  --line: rgba(29, 42, 36, 0.16);
+  --field: rgba(29, 42, 36, 0.24);
+  --focus: #2c79d9;
+
+  --red: #e8402f;
+  --yellow: #b87f00;
+  --green: #1b9462;
+  --blue: #2c79d9;
+
+  color-scheme: light;
+}
+
+.dark {
+  --background: #0e1311;
+  --foreground: #fff6e3;
+
+  --card: #151c19;
+  --card-foreground: #fff6e3;
+
+  --muted: #121916;
+  --muted-foreground: #a9b3ac;
+
+  --accent: #1a231f;
+  --accent-foreground: #fff6e3;
+
+  --primary: #ff5a4d;
+  --primary-foreground: #1d2a24;
+
+  --line: rgba(255, 246, 227, 0.13);
+  --field: rgba(255, 246, 227, 0.2);
+  --focus: #4c9bff;
+
+  --red: #ff5a4d;
+  --yellow: #ffc43d;
+  --green: #2fb67c;
+  --blue: #4c9bff;
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-line: var(--line);
+  --color-field: var(--field);
+  --color-focus: var(--focus);
+
+  --color-red: var(--red);
+  --color-yellow: var(--yellow);
+  --color-green: var(--green);
+  --color-blue: var(--blue);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-ink: #1d2a24;
+  --color-cream: #fffdf7;
+  --color-brand-red: #ff5a4d;
+  --color-brand-yellow: #ffc43d;
+  --color-brand-green: #2fb67c;
+  --color-brand-blue: #4c9bff;
+
+  --font-sans: "Fredoka", system-ui, sans-serif;
+
+  --animate-shimmer: shimmer 3s ease-in-out infinite;
+
+  @keyframes shimmer {
+    to {
+      background-position: 200% center;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-line outline-focus/50;
+  }
+
+  body {
+    @apply bg-background font-sans font-medium leading-[normal] text-foreground antialiased;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  button:disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+}
+
+@utility shimmer {
+  background-image: linear-gradient(
+    110deg,
+    var(--color-brand-red),
+    var(--color-brand-blue),
+    var(--color-brand-green),
+    var(--color-brand-yellow),
+    var(--color-brand-red)
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s ease-in-out infinite;
+}
