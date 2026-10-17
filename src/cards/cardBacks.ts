@@ -12,6 +12,8 @@ export const CARD_BACK_NAMES = [
   "Inferno",
   "Fan Emblem",
   "Bolt",
+  "Oval Letters",
+  "Letter Cards",
 ] as const;
 
 export type CardBackName = (typeof CARD_BACK_NAMES)[number];
